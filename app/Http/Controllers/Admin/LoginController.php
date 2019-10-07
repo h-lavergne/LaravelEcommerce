@@ -34,7 +34,7 @@ class LoginController extends Controller
             'email' => $request->email,
             'password' =>$request->password
         ], $request->get('remember'))) {
-            return redirect()->intended(route('admin.dahsboard'));
+            return redirect()->intended(route('admin.dashboard'));
         }
 
         return back()->withInput($request->only('email', 'remember'));
@@ -44,6 +44,6 @@ class LoginController extends Controller
     {
         Auth::guard('admin')->logout();
         $request->session()->invalidate();
-        return redirect()->route('admin.login');
+        return redirect()->route("admin.login");
     }
 }
